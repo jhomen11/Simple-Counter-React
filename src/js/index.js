@@ -9,7 +9,27 @@ import "bootstrap";
 import "../styles/index.scss";
 
 //import your own components
-import Home from "./component/home.jsx";
+import SecondsCounter from "./component/SecondsCounter.jsx";
 
 //render your react application
-ReactDOM.render(<Home />, document.querySelector("#app"));
+let contador = 0;
+const inicio = setInterval(() => {
+	contador++;
+	const cinco = Math.floor(contador / 1000);
+	const cuatro = Math.floor(contador / 1000);
+	const tres = Math.floor(contador / 100) % 10;
+	const dos = Math.trunc(contador / 10) % 10;
+	const uno = Math.trunc(contador % 10);
+	//console.log(contador % 10);
+	ReactDOM.render(
+		<SecondsCounter
+			tSegundo1={uno}
+			tSegundo2={dos}
+			tSegundo3={tres}
+			tSegundo4={cuatro}
+			tSegundo5={cinco}
+			inicio={inicio}
+		/>,
+		document.querySelector("#app")
+	);
+}, 1000);
